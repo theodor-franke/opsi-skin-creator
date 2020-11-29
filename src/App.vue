@@ -1,28 +1,72 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <nav class="navbar is-primary">
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" :class="{'is-active': active===ACTION}" @click="active=ACTION">
+                        Action
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div id="settings">
+            <action-settings v-if="active===ACTION" :settings.sync="settings.action"/>
+        </div>
+        <div id="preview">
+            <action-preview v-if="active===ACTION" :settings="settings.action"/>
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import ActionPreview from "@/components/actionPreview";
+    import ActionSettings from "@/components/actionSettings";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+        components: {ActionSettings, ActionPreview},
+        data() {
+            return {
+                ACTION: 'action',
+
+                active: 'action',
+                settings: {
+                    action: {
+                        backgroundColor: '#c6c6c6',
+                        form: {
+                            width: 300,
+                            height: 200,
+                            Left: -1,
+                            Top: -1,
+                        }
+                    }
+                }
+            }
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    html, body, #app {
+        width: 100%;
+        height: 100%;
+    }
+
+    #settings {
+        width: 30%;
+        display: inline-block;
+        height: calc(100% - 52px);
+        vertical-align: top;
+        overflow: scroll;
+        padding: 10px;
+    }
+
+    #preview {
+        width: calc(70% - 2px);
+        border-left: 2px solid gray;
+        display: inline-block;
+        height: calc(100% - 52px);
+        vertical-align: top;
+        overflow: hidden;
+    }
 </style>
