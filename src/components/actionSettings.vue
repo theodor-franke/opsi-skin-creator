@@ -8,7 +8,7 @@
             <p class="help">
                 This is only for testing and not included in the final Skin.
             </p>
-            <chrome v-model='bgColorTmp' style="margin-top: 10px"/>
+            <chrome v-model='newSettings.backgroundColor' style="margin-top: 10px"/>
         </div>
         <hr>
         <h3 class="title is-4">
@@ -16,11 +16,11 @@
         </h3>
         <div class="field">
             <label class="label">Width</label>
-            <input class="input" type="number" v-model="settings.form.width">
+            <input class="input" type="number" v-model="newSettings.form.width">
         </div>
         <div class="field">
             <label class="label">Height</label>
-            <input class="input" type="number" v-model="settings.form.height">
+            <input class="input" type="number" v-model="newSettings.form.height">
         </div>
         <div class="field">
             <label class="label">position</label>
@@ -41,6 +41,81 @@
                 </select>
             </div>
         </div>
+        <div class="field">
+            <label class="label">Color</label>
+            <chrome v-model='newSettings.formColor'/>
+        </div>
+        <div class="field">
+            <label class="label">other</label>
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Transparent">
+                <span class="check is-success"></span>
+                <span class="control-label">Transparent</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.StayOnTop">
+                <span class="check is-success"></span>
+                <span class="control-label">StayOnTop</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Frame">
+                <span class="check is-success"></span>
+                <span class="control-label">Frame</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Resizable">
+                <span class="check is-success"></span>
+                <span class="control-label">Resizable</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Closeable">
+                <span class="check is-success"></span>
+                <span class="control-label">Closeable</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Minimizable">
+                <span class="check is-success"></span>
+                <span class="control-label">Minimizable</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Hidden">
+                <span class="check is-success"></span>
+                <span class="control-label">Hidden</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.FadeIn">
+                <span class="check is-success"></span>
+                <span class="control-label">FadeIn</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.FadeOut">
+                <span class="check is-success"></span>
+                <span class="control-label">FadeOut</span>
+            </label>
+        </div>
+        <div class="field">
+            <label class="switch is-rounded">
+                <input type="checkbox" v-model="newSettings.form.Systray">
+                <span class="check is-success"></span>
+                <span class="control-label">Systray</span>
+            </label>
+        </div>
     </div>
 </template>
 
@@ -56,19 +131,16 @@
         data() {
             return {
                 newSettings: {...this.settings},
-                bgColorTmp: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 198}, "hex": "#c6c6c6"},
                 positionFormTmp: 4
             }
         },
         watch: {
             newSettings: {
                 handler() {
+                    this.newSettings.form.Color = this.RGBToOpsiRGB(this.newSettings.formColor.rgba)
                     this.$emit('update:settings', this.newSettings)
                 },
                 deep: true
-            },
-            bgColorTmp(val) {
-                this.newSettings.backgroundColor = val['hex']
             },
             positionFormTmp(val) {
                 let top;
@@ -86,11 +158,10 @@
                     top = -1
                     left = -1
                 }
-
                 this.newSettings.form.Left = left;
                 this.newSettings.form.Top = top;
+            },
 
-            }
         }
     }
 </script>

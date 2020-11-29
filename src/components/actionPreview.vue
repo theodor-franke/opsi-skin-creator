@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="{backgroundColor: settings.backgroundColor}">
+    <div class="wrapper" :style="{backgroundColor: settings.backgroundColor['hex']}">
         <div class="opsi-form" :style="formStyle">
         </div>
     </div>
@@ -23,6 +23,8 @@
                 if (this.settings.form.Left === -1) style['right'] = 0;
                 else style['left'] = 0;
 
+                style['backgroundColor'] = this.settings.formColor['hex']
+
                 return style
             }
         }
@@ -39,6 +41,5 @@
     .opsi-form {
         position: absolute;
         display: block;
-        background-color: aqua;
     }
 </style>
