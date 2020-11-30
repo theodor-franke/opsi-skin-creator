@@ -33,10 +33,9 @@
                 settings: {
                     action: {
                         backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
-                        formColor: {"rgba": {"r": 255, "g": 255, "b": 255, "a": 1}, "hex": "#FFFFFF"},
                         form: {
-                            width: 300,
-                            height: 200,
+                            Width: 300,
+                            Height: 200,
                             Left: -1,
                             Top: -1,
                             Transparent: false,
