@@ -58,6 +58,24 @@
                             Height: 200,
                             imageData: null,
                             File: 'action.bmp'
+                        },
+                        LabelStatus: {
+                            Name: 'LabelStatus',
+                            Transparent: true,
+                            Left: 65,
+                            Top: 15,
+                            Width: 230,
+                            Height: 30,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 12,
+                            FontColor: '106,128,174',
+                            FontBold: true,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'status',
+                            Text: 'Connecting to opsiclientd...',
+                            debuggingColor: false
                         }
                     }
                 }

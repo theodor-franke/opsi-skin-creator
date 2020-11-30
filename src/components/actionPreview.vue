@@ -12,16 +12,18 @@
                     :transparent-color="settings.Form.TransparentColor"
                     :transparent="settings.Form.Transparent"
             />
+            <label-preview :label="settings.LabelStatus"/>
         </div>
     </div>
 </template>
 
 <script>
     import BackgroundImagePreview from "@/components/shared/backgroundImagePreview";
+    import LabelPreview from "@/components/shared/labelPreview";
 
     export default {
         name: "actionPreview",
-        components: {BackgroundImagePreview},
+        components: {LabelPreview, BackgroundImagePreview},
         props: {
             settings: Object
         },

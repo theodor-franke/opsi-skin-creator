@@ -27,7 +27,7 @@
     import NumberField from "@/components/shared/numberField";
 
     export default {
-        name: "backgroundImage",
+        name: "backgroundImageSection",
         components: {NumberField},
         props: {
             image: Object

@@ -105,8 +105,8 @@
                     top = -1
                     left = -1
                 }
-                this.newSettings.form.Left = left;
-                this.newSettings.form.Top = top;
+                this.newForm.Left = left;
+                this.newForm.Top = top;
             },
             newForm: {
                 handler() {

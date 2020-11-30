@@ -11,18 +11,20 @@
             <chrome v-model='newSettings.backgroundColor' style="margin-top: 10px"/>
         </div>
         <form-section :form.sync="newSettings.Form"/>
-        <background-image :image.sync="newSettings.ImageBg"/>
+        <background-image-section :image.sync="newSettings.ImageBg"/>
+        <label-section :label.sync="newSettings.LabelStatus"/>
     </div>
 </template>
 
 <script>
     import chrome from 'vue-color/src/components/Chrome.vue';
     import FormSection from "@/components/shared/formSection";
-    import BackgroundImage from "@/components/shared/backgroundImage";
+    import LabelSection from "@/components/shared/LabelSection";
+    import BackgroundImageSection from "@/components/shared/backgroundImageSection";
 
     export default {
         name: "actionSettings",
-        components: {BackgroundImage, FormSection, chrome},
+        components: {BackgroundImageSection, LabelSection, FormSection, chrome},
         props: {
             settings: Object
         },
