@@ -13,6 +13,7 @@
                     :transparent="settings.Form.Transparent"
             />
             <label-preview :label="settings.LabelStatus"/>
+            <label-preview :label="settings.LabelMessage"/>
         </div>
     </div>
 </template>

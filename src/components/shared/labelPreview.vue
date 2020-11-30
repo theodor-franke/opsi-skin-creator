@@ -21,7 +21,10 @@
                     fontSize: this.label.FontSize + 'pt',
                     color: this.OpsiRGBtoRGBString(this.label.FontColor),
                     backgroundColor: this.label.debuggingColor ? this.label.debuggingColor.hex : 'transparent',
-                    textAlign: this.label.Alignment
+                    textAlign: this.label.Alignment,
+                    fontWeight: this.label.FontBold ? 'bold' : 'normal',
+                    fontStyle: this.label.FontItalic ? 'italic' : 'normal',
+                    textDecoration: this.label.FontUnderline ? 'underline' : 'none'
                 }
             }
         }

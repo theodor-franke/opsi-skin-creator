@@ -76,7 +76,26 @@
                             SubjectId: 'status',
                             Text: 'Connecting to opsiclientd...',
                             debuggingColor: false
+                        },
+                        LabelMessage: {
+                            Name: 'LabelMessage',
+                            Transparent: true,
+                            Left: 25,
+                            Top: 55,
+                            Width: 260,
+                            Height: 90,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 10,
+                            FontColor: '50,50,50',
+                            FontBold: false,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'message',
+                            Text: '',
+                            debuggingColor: false
                         }
+
                     }
                 }
             }

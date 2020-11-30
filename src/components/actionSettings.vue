@@ -13,6 +13,7 @@
         <form-section :form.sync="newSettings.Form"/>
         <background-image-section :image.sync="newSettings.ImageBg"/>
         <label-section :label.sync="newSettings.LabelStatus"/>
+        <label-section :label.sync="newSettings.LabelMessage"/>
     </div>
 </template>
 
