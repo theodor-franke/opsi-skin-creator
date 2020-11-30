@@ -1,5 +1,6 @@
 <template>
     <div>
+        <hr>
         <h3 class="title is-4">
             Form
         </h3>
@@ -25,9 +26,17 @@
             </div>
         </div>
         <div class="field">
-            <label class="label">Color</label>
-            <check-field :value.sync="newForm.Transparent" label="Transparent"/>
+            <label class="label">Background Color</label>
             <chrome v-if="!newForm.Transparent" v-model='backgroundColor'/>
+        </div>
+        <div class="field">
+            <label class="label">Transparent</label>
+            <check-field :value.sync="newForm.Transparent" label="Transparent"/>
+            <template v-if="newForm.Transparent">
+                <label class="label">Transparent color</label>
+                <p class="help">The Color of the Pixels in you Background image that get Transparent</p>
+                <chrome v-model='transparentColor'/>
+            </template>
         </div>
         <div class="field">
             <label class="label">other</label>
@@ -68,6 +77,14 @@
                 },
                 set(val) {
                     this.newForm.Color = this.RGBToOpsiRGB(val.rgba)
+                }
+            },
+            transparentColor: {
+                get() {
+                    return this.OpsiRGBtoRGB(this.form.TransparentColor)
+                },
+                set(val) {
+                    this.newForm.TransparentColor = this.RGBToOpsiRGB(val.rgba)
                 }
             }
         },

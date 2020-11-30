@@ -10,18 +10,19 @@
             </p>
             <chrome v-model='newSettings.backgroundColor' style="margin-top: 10px"/>
         </div>
-        <form-section :form.sync="newSettings.form"/>
-        <hr>
+        <form-section :form.sync="newSettings.Form"/>
+        <background-image :image.sync="newSettings.ImageBg"/>
     </div>
 </template>
 
 <script>
     import chrome from 'vue-color/src/components/Chrome.vue';
     import FormSection from "@/components/shared/formSection";
+    import BackgroundImage from "@/components/shared/backgroundImage";
 
     export default {
         name: "actionSettings",
-        components: {FormSection, chrome},
+        components: {BackgroundImage, FormSection, chrome},
         props: {
             settings: Object
         },

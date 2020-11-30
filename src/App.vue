@@ -33,7 +33,7 @@
                 settings: {
                     action: {
                         backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
-                        form: {
+                        Form: {
                             Width: 300,
                             Height: 200,
                             Left: -1,
@@ -48,7 +48,16 @@
                             FadeIn: true,
                             FadeOut: true,
                             Systray: true,
-                            Color: '255,255,255'
+                            Color: '255,255,255',
+                            TransparentColor: '255,0,255',
+                        },
+                        ImageBg: {
+                            Left: 0,
+                            Top: 0,
+                            Width: 300,
+                            Height: 200,
+                            imageData: null,
+                            File: 'action.bmp'
                         }
                     }
                 }
