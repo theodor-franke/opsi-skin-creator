@@ -19,9 +19,9 @@
 
 <script>
     import chrome from 'vue-color/src/components/Chrome.vue';
-    import FormSection from "@/components/shared/formSection";
-    import LabelSection from "@/components/shared/LabelSection";
-    import BackgroundImageSection from "@/components/shared/backgroundImageSection";
+    import FormSection from "@/components/sections/formSection";
+    import LabelSection from "@/components/sections/LabelSection";
+    import BackgroundImageSection from "@/components/sections/backgroundImageSection";
 
     export default {
         name: "actionSettings",

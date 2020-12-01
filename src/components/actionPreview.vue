@@ -21,8 +21,8 @@
 </template>
 
 <script>
-    import BackgroundImagePreview from "@/components/shared/backgroundImagePreview";
-    import LabelPreview from "@/components/shared/labelPreview";
+    import BackgroundImagePreview from "@/components/previews/backgroundImagePreview";
+    import LabelPreview from "@/components/previews/labelPreview";
 
     export default {
         name: "actionPreview",
