@@ -10,27 +10,19 @@
             </p>
             <chrome v-model='newSettings.backgroundColor' style="margin-top: 10px"/>
         </div>
-        <form-section :form.sync="newSettings.Form" :default-pos="4"/>
+        <form-section :form.sync="newSettings.Form" :default-pos="2"/>
         <background-image-section :image.sync="newSettings.ImageBg"/>
-        <label-section :label.sync="newSettings.LabelStatus"/>
-        <label-section :label.sync="newSettings.LabelMessage"/>
-        <button-theme-section :theme.sync="newSettings.ButtonTheme"/>
-        <button-section :button.sync="newSettings.ButtonStop"/>
-        <button-section :button.sync="newSettings.ButtonStart"/>
     </div>
 </template>
 
 <script>
     import chrome from 'vue-color/src/components/Chrome.vue';
     import FormSection from "@/components/sections/formSection";
-    import LabelSection from "@/components/sections/LabelSection";
     import BackgroundImageSection from "@/components/sections/backgroundImageSection";
-    import ButtonThemeSection from "@/components/sections/buttonThemeSection";
-    import ButtonSection from "@/components/sections/buttonSection";
 
     export default {
-        name: "actionSettings",
-        components: {ButtonSection, ButtonThemeSection, BackgroundImageSection, LabelSection, FormSection, chrome},
+        name: "blockSettings",
+        components: {BackgroundImageSection, FormSection, chrome},
         props: {
             settings: Object
         },

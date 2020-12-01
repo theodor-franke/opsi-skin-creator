@@ -60,12 +60,13 @@
         name: "formSection",
         components: {ColorField, CheckField, NumberField, chrome},
         props: {
-            form: Object
+            form: Object,
+            defaultPos: Number
         },
         data() {
             return {
                 newForm: {...this.form},
-                positionFormTmp: 4,
+                positionFormTmp: this.defaultPos,
             }
         },
         computed: {

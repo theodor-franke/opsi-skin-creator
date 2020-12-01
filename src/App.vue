@@ -6,14 +6,19 @@
                     <a class="navbar-item" :class="{'is-active': active===ACTION}" @click="active=ACTION">
                         Action
                     </a>
+                    <a class="navbar-item" :class="{'is-active': active===BLOCK_LOGIN}" @click="active=BLOCK_LOGIN">
+                        Block Login
+                    </a>
                 </div>
             </div>
         </nav>
         <div id="settings">
             <action-settings v-if="active===ACTION" :settings.sync="settings.action"/>
+            <block-settings v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
         </div>
         <div id="preview">
             <action-preview v-if="active===ACTION" :settings="settings.action"/>
+            <block-preview v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
         </div>
     </div>
 </template>
@@ -21,13 +26,16 @@
 <script>
     import ActionPreview from "@/components/actionPreview";
     import ActionSettings from "@/components/actionSettings";
+    import BlockSettings from "@/components/blockSettings";
+    import BlockPreview from "@/components/blockPreview";
 
     export default {
         name: 'App',
-        components: {ActionSettings, ActionPreview},
+        components: {BlockPreview, BlockSettings, ActionSettings, ActionPreview},
         data() {
             return {
                 ACTION: 'action',
+                BLOCK_LOGIN: 'block',
 
                 active: 'action',
                 settings: {
@@ -128,6 +136,38 @@
                             ChoiceIndex: 1,
                             Text: ''
                         }
+                    },
+                    block: {
+                        backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
+                        Form: {
+                            Color: '255,255,255',
+                            Transparent: true,
+                            StayOnTop: true,
+                            Frame: false,
+                            Resizable: false,
+                            Closeable: false,
+                            Minimizable: false,
+                            Text: 'Opsi Dialog',
+                            Width: 100,
+                            Height: 100,
+                            Left: -1,
+                            Top: 1,
+                            Hidden: false,
+                            FadeIn: true,
+                            FadeOut: true,
+                            Systray: true,
+                            Icon: 'opsi.ico',
+                            TransparentColor: '255,0,255'
+                        },
+                        ImageBg: {
+                            active: true,
+                            Left: 0,
+                            Top: 0,
+                            Width: 100,
+                            Height: 100,
+                            imageData: null,
+                            File: 'block_login.bmp'
+                        }
                     }
                 }
             }
@@ -157,5 +197,10 @@
         height: calc(100% - 52px);
         vertical-align: top;
         overflow: hidden;
+    }
+    .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
     }
 </style>
