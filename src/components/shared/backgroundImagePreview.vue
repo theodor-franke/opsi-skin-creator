@@ -4,7 +4,8 @@
             ref="ImageBgCanvas"
             :height="formHeight - top"
             :width="formWidth - left"
-    ></canvas>
+    >
+    </canvas>
 </template>
 
 <script>
@@ -19,7 +20,11 @@
             formHeight: Number,
             formWidth: Number,
             transparentColor: String,
-            transparent: Boolean
+            transparent: Boolean,
+            defaultImage: String,
+        },
+        mounted() {
+            this.updateCanvas();
         },
         computed: {
             backgroundImageStyle() {
@@ -54,8 +59,8 @@
                     }
                     ctx.putImageData(imgData, 0, 0);
                 };
-
-                img.src = this.imgSrc;
+                if (this.imgSrc) img.src = this.imgSrc;
+                else img.src = this.defaultImage;
             }
         },
         watch: {

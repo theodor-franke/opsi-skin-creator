@@ -11,6 +11,7 @@
                     :form-width="settings.Form.Width"
                     :transparent-color="settings.Form.TransparentColor"
                     :transparent="settings.Form.Transparent"
+                    :default-image="require('@/assets/action.png')"
             />
             <label-preview :label="settings.LabelStatus"/>
             <label-preview :label="settings.LabelMessage"/>
