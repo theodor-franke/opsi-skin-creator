@@ -18,7 +18,7 @@
                     left: this.label.Left + 'px',
                     top: this.label.Top + 'px',
                     fontFamily: this.label.FontName,
-                    fontSize: this.label.FontSize + 'pt',
+                    fontSize: this.label.FontSize - 1 + 'px',
                     color: this.OpsiRGBtoRGBString(this.label.FontColor),
                     backgroundColor: this.label.Transparent ? 'transparent' : this.OpsiRGBtoRGBString(this.label.Color),
                     textAlign: this.label.Alignment,

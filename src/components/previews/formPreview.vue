@@ -1,5 +1,5 @@
 <template>
-    <div class="opsi-form" :style="formStyle">
+    <div class="opsi-form" :style="formStyle" :class="{'opsi-event': event}">
         <slot></slot>
     </div>
 </template>
@@ -8,7 +8,8 @@
     export default {
         name: "formPreview",
         props: {
-            form: Object
+            form: Object,
+            event: Boolean
         },
         computed: {
             formStyle() {
@@ -34,5 +35,9 @@
     .opsi-form {
         position: absolute;
         display: block;
+    }
+    .opsi-event {
+        position: relative !important;
+        margin: 20px auto 0 auto;
     }
 </style>
