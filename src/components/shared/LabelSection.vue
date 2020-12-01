@@ -15,6 +15,12 @@
             <chrome v-model='fontColor'/>
         </div>
         <check-field :value.sync="newLabel.Transparent" label="Transparent"/>
+        <div class="field" v-if="!newLabel.Transparent">
+            <label class="label">
+                Background-Color
+            </label>
+            <chrome v-model='color'/>
+        </div>
         <check-field :value.sync="newLabel.FontBold" label="Bold"/>
         <check-field :value.sync="newLabel.FontItalic" label="Italic"/>
         <check-field :value.sync="newLabel.FontUnderline" label="underline"/>
@@ -37,16 +43,6 @@
                 </select>
             </div>
         </div>
-        <div class="field">
-            <label class="label">
-                Debugging BackgroundColor
-            </label>
-            <check-field :value.sync="debugSwitch" label="Enable"/>
-            <div class="help">
-                This Background-color is only for testing and dose not get exported
-            </div>
-            <chrome v-if="debugSwitch" v-model='newLabel.debuggingColor'/>
-        </div>
     </div>
 </template>
 
@@ -64,8 +60,7 @@
         },
         data() {
             return {
-                newLabel: {...this.label},
-                debugSwitch: false
+                newLabel: {...this.label}
             }
         },
         computed: {
@@ -75,6 +70,14 @@
                 },
                 set(val) {
                     this.newLabel.FontColor = this.RGBToOpsiRGB(val.rgba)
+                }
+            },
+            color: {
+                get() {
+                    return this.OpsiRGBtoRGB(this.newLabel.Color)
+                },
+                set(val) {
+                    this.newLabel.Color = this.RGBToOpsiRGB(val.rgba)
                 }
             }
         },

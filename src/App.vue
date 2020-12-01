@@ -93,7 +93,7 @@
                             Alignment: 'left',
                             SubjectId: 'message',
                             Text: '',
-                            debuggingColor: false
+                            Color: '255,255,255'
                         }
 
                     }

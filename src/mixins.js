@@ -1,15 +1,15 @@
 export default {
     methods: {
         RGBToOpsiRGB(value) {
-            return value.b + ',' + value.g + ',' + value.r;
+            return value.r + ',' + value.g + ',' + value.b;
         },
         OpsiRGBtoRGB(value) {
             let tmp = value.split(',')
             return {
                 rgb: {
-                    r: parseInt(tmp[2]),
+                    r: parseInt(tmp[0]),
                     g: parseInt(tmp[1]),
-                    b: parseInt(tmp[0])
+                    b: parseInt(tmp[2])
                 }
             }
         },

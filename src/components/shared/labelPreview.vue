@@ -20,7 +20,7 @@
                     fontFamily: this.label.FontName,
                     fontSize: this.label.FontSize + 'pt',
                     color: this.OpsiRGBtoRGBString(this.label.FontColor),
-                    backgroundColor: this.label.debuggingColor ? this.label.debuggingColor.hex : 'transparent',
+                    backgroundColor: this.label.Transparent ? 'transparent' : this.OpsiRGBtoRGBString(this.label.Color),
                     textAlign: this.label.Alignment,
                     fontWeight: this.label.FontBold ? 'bold' : 'normal',
                     fontStyle: this.label.FontItalic ? 'italic' : 'normal',
