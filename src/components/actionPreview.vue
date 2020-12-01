@@ -15,7 +15,9 @@
                     :default-image="require('@/assets/action.png')"
             />
             <label-preview v-if="settings.LabelStatus.active" :label="settings.LabelStatus"/>
-            <label-preview v-if="settings.LabelStatus.active" :label="settings.LabelMessage"/>
+            <label-preview v-if="settings.LabelMessage.active" :label="settings.LabelMessage"/>
+            <button-preview :button="settings.ButtonStop" :button-theme="settings.ButtonTheme"/>
+            <button-preview :button="settings.ButtonStart" :button-theme="settings.ButtonTheme"/>
         </div>
     </div>
 </template>
@@ -23,10 +25,11 @@
 <script>
     import BackgroundImagePreview from "@/components/previews/backgroundImagePreview";
     import LabelPreview from "@/components/previews/labelPreview";
+    import ButtonPreview from "@/components/previews/buttonPreview";
 
     export default {
         name: "actionPreview",
-        components: {LabelPreview, BackgroundImagePreview},
+        components: {ButtonPreview, LabelPreview, BackgroundImagePreview},
         props: {
             settings: Object
         },

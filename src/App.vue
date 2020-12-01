@@ -97,8 +97,37 @@
                             SubjectId: 'message',
                             Text: '',
                             Color: '255,255,255'
+                        },
+                        ButtonTheme: {
+                            ColorBgPassive: '229,241,241',
+                            ColorBgOver: '225,255,255',
+                            ColorBgChecked: '229,241,241',
+                            ColorBgDisabled: '232,232,232',
+                            ColorBorderPassive: '196,197,197',
+                            ColorBorderOver: '76,160,160',
+                            ColorBorderFocused: '76,160,160',
+                            ColorFont: '0,0,0',
+                        },
+                        ButtonStop: {
+                            Name: 'Stop-Button',
+                            Left: 15,
+                            Top: 175,
+                            Width: 120,
+                            Height: 15,
+                            SubjectId: 'choice',
+                            ChoiceIndex: 0,
+                            Text: ''
+                        },
+                        ButtonStart: {
+                            Name: 'Start-Button',
+                            Left: 165,
+                            Top: 175,
+                            Width: 120,
+                            Height: 15,
+                            SubjectId: 'choice',
+                            ChoiceIndex: 1,
+                            Text: ''
                         }
-
                     }
                 }
             }

@@ -25,10 +25,7 @@
                 </select>
             </div>
         </div>
-        <div class="field">
-            <label class="label">Background Color</label>
-            <chrome v-if="!newForm.Transparent" v-model='backgroundColor'/>
-        </div>
+        <color-field :color.sync="newForm.Color" v-if="!newForm.Transparent" label="Background Color"/>
         <div class="field">
             <label class="label">Transparent</label>
             <check-field :value.sync="newForm.Transparent" label="Transparent"/>
@@ -57,10 +54,11 @@
     import chrome from 'vue-color/src/components/Chrome.vue';
     import NumberField from "@/components/shared/numberField";
     import CheckField from "@/components/shared/checkField";
+    import ColorField from "@/components/shared/colorField";
 
     export default {
         name: "formSection",
-        components: {CheckField, NumberField, chrome},
+        components: {ColorField, CheckField, NumberField, chrome},
         props: {
             form: Object
         },
@@ -71,14 +69,6 @@
             }
         },
         computed: {
-            backgroundColor: {
-                get() {
-                    return this.OpsiRGBtoRGB(this.form.Color)
-                },
-                set(val) {
-                    this.newForm.Color = this.RGBToOpsiRGB(val.rgba)
-                }
-            },
             transparentColor: {
                 get() {
                     return this.OpsiRGBtoRGB(this.form.TransparentColor)

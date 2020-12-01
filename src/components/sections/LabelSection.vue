@@ -11,17 +11,9 @@
         <number-field :value.sync="newLabel.Left" label="Left"/>
         <string-field :value.sync="newLabel.FontName" label="FontName"/>
         <number-field :value.sync="newLabel.FontSize" label="FontSize (pt)"/>
-        <div class="field">
-            <label class="label">FontColor</label>
-            <chrome v-model='fontColor'/>
-        </div>
+        <color-field :color.sync="newLabel.FontColor" label="FontColor"/>
         <check-field :value.sync="newLabel.Transparent" label="Transparent"/>
-        <div class="field" v-if="!newLabel.Transparent">
-            <label class="label">
-                Background-Color
-            </label>
-            <chrome v-model='color'/>
-        </div>
+        <color-field :color.sync="newLabel.Color" v-if="!newLabel.Transparent" label="FontColor"/>
         <check-field :value.sync="newLabel.FontBold" label="Bold"/>
         <check-field :value.sync="newLabel.FontItalic" label="Italic"/>
         <check-field :value.sync="newLabel.FontUnderline" label="underline"/>
@@ -48,14 +40,14 @@
 </template>
 
 <script>
-    import chrome from 'vue-color/src/components/Chrome.vue';
     import NumberField from "@/components/shared/numberField";
     import StringField from "@/components/shared/StringField";
     import CheckField from "@/components/shared/checkField";
+    import ColorField from "@/components/shared/colorField";
 
     export default {
         name: "LabelSection",
-        components: {CheckField, StringField, NumberField, chrome},
+        components: {ColorField, CheckField, StringField, NumberField},
         props: {
             label: Object
         },
@@ -64,34 +56,12 @@
                 newLabel: {...this.label}
             }
         },
-        computed: {
-            fontColor: {
-                get() {
-                    return this.OpsiRGBtoRGB(this.newLabel.FontColor)
-                },
-                set(val) {
-                    this.newLabel.FontColor = this.RGBToOpsiRGB(val.rgba)
-                }
-            },
-            color: {
-                get() {
-                    return this.OpsiRGBtoRGB(this.newLabel.Color)
-                },
-                set(val) {
-                    this.newLabel.Color = this.RGBToOpsiRGB(val.rgba)
-                }
-            }
-        },
         watch: {
             newLabel: {
                 handler() {
                     this.$emit('update:label', this.newLabel)
                 },
                 deep: true
-            },
-            debugSwitch(val) {
-                if (val) this.newLabel.debuggingColor = {hex: '#95FF44'};
-                else this.newLabel.debuggingColor = false;
             }
         }
     }

@@ -14,6 +14,9 @@
         <background-image-section :image.sync="newSettings.ImageBg"/>
         <label-section :label.sync="newSettings.LabelStatus"/>
         <label-section :label.sync="newSettings.LabelMessage"/>
+        <button-theme-section :theme.sync="newSettings.ButtonTheme"/>
+        <button-section :button.sync="newSettings.ButtonStop"/>
+        <button-section :button.sync="newSettings.ButtonStart"/>
     </div>
 </template>
 
@@ -22,10 +25,12 @@
     import FormSection from "@/components/sections/formSection";
     import LabelSection from "@/components/sections/LabelSection";
     import BackgroundImageSection from "@/components/sections/backgroundImageSection";
+    import ButtonThemeSection from "@/components/sections/buttonThemeSection";
+    import ButtonSection from "@/components/sections/buttonSection";
 
     export default {
         name: "actionSettings",
-        components: {BackgroundImageSection, LabelSection, FormSection, chrome},
+        components: {ButtonSection, ButtonThemeSection, BackgroundImageSection, LabelSection, FormSection, chrome},
         props: {
             settings: Object
         },
