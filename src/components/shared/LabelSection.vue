@@ -4,6 +4,7 @@
         <h3 class="title is-4">
             {{newLabel.Name}}
         </h3>
+        <check-field :value.sync="newLabel.active" label="Active"/>
         <number-field :value.sync="newLabel.Width" label="Width"/>
         <number-field :value.sync="newLabel.Height" label="Height"/>
         <number-field :value.sync="newLabel.Top" label="Top"/>

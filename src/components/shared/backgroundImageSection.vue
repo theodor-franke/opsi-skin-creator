@@ -4,6 +4,7 @@
         <h3 class="title is-4">
             BackgroundImage
         </h3>
+        <check-field :value.sync="newImage.active" label="Active"/>
         <number-field :value.sync="newImage.Left" label="Left"/>
         <number-field :value.sync="newImage.Top" label="Top"/>
         <number-field :value.sync="newImage.Width" label="Width"/>
@@ -25,10 +26,11 @@
 
 <script>
     import NumberField from "@/components/shared/numberField";
+    import CheckField from "@/components/shared/checkField";
 
     export default {
         name: "backgroundImageSection",
-        components: {NumberField},
+        components: {CheckField, NumberField},
         props: {
             image: Object
         },

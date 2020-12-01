@@ -52,6 +52,7 @@
                             TransparentColor: '255,0,255',
                         },
                         ImageBg: {
+                            active: true,
                             Left: 0,
                             Top: 0,
                             Width: 300,
@@ -60,6 +61,7 @@
                             File: 'action.bmp'
                         },
                         LabelStatus: {
+                            active: true,
                             Name: 'LabelStatus',
                             Transparent: true,
                             Left: 65,
@@ -78,6 +80,7 @@
                             debuggingColor: false
                         },
                         LabelMessage: {
+                            active: true,
                             Name: 'LabelMessage',
                             Transparent: true,
                             Left: 25,

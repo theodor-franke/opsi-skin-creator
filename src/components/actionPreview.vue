@@ -2,6 +2,7 @@
     <div class="wrapper" :style="{backgroundColor: settings.backgroundColor['hex']}">
         <div class="opsi-form" :style="formStyle">
             <background-image-preview
+                    v-if="settings.ImageBg.active"
                     :img-src="settings.ImageBg.imageData"
                     :height="settings.ImageBg.Height"
                     :width="settings.ImageBg.Width"
@@ -13,8 +14,8 @@
                     :transparent="settings.Form.Transparent"
                     :default-image="require('@/assets/action.png')"
             />
-            <label-preview :label="settings.LabelStatus"/>
-            <label-preview :label="settings.LabelMessage"/>
+            <label-preview v-if="settings.LabelStatus.active" :label="settings.LabelStatus"/>
+            <label-preview v-if="settings.LabelStatus.active" :label="settings.LabelMessage"/>
         </div>
     </div>
 </template>
