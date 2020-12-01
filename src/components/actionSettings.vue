@@ -14,9 +14,9 @@
         <background-image-section :image.sync="newSettings.ImageBg"/>
         <label-section :label.sync="newSettings.LabelStatus"/>
         <label-section :label.sync="newSettings.LabelMessage"/>
-        <button-theme-section :theme.sync="newSettings.ButtonTheme"/>
-        <button-section :button.sync="newSettings.ButtonStop"/>
-        <button-section :button.sync="newSettings.ButtonStart"/>
+        <button-theme-section v-if="newSettings.ButtonTheme" :theme.sync="newSettings.ButtonTheme"/>
+        <button-section v-if="newSettings.ButtonStop" :button.sync="newSettings.ButtonStop"/>
+        <button-section v-if="newSettings.ButtonStart" :button.sync="newSettings.ButtonStart"/>
     </div>
 </template>
 
@@ -37,15 +37,24 @@
         data() {
             return {
                 newSettings: {...this.settings},
+                block: false
             }
         },
         watch: {
             newSettings: {
                 handler() {
+                    this.block = true;
                     this.$emit('update:settings', this.newSettings)
                 },
                 deep: true
             },
+            settings: {
+                handler() {
+                    if (this.block) this.block = false;
+                    else this.newSettings = {...this.settings}
+                },
+                deep: true
+            }
         }
     }
 </script>

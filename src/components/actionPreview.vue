@@ -12,12 +12,14 @@
                     :form-width="settings.Form.Width"
                     :transparent-color="settings.Form.TransparentColor"
                     :transparent="settings.Form.Transparent"
-                    :default-image="require('@/assets/action.png')"
+                    :default-image="defaultImage"
             />
             <label-preview v-if="settings.LabelStatus.active" :label="settings.LabelStatus"/>
             <label-preview v-if="settings.LabelMessage.active" :label="settings.LabelMessage"/>
-            <button-preview :button="settings.ButtonStop" :button-theme="settings.ButtonTheme"/>
-            <button-preview :button="settings.ButtonStart" :button-theme="settings.ButtonTheme"/>
+            <button-preview v-if="settings.ButtonStop" :button="settings.ButtonStop"
+                            :button-theme="settings.ButtonTheme"/>
+            <button-preview v-if="settings.ButtonStart" :button="settings.ButtonStart"
+                            :button-theme="settings.ButtonTheme"/>
         </form-preview>
     </div>
 </template>
@@ -32,7 +34,8 @@
         name: "actionPreview",
         components: {FormPreview, ButtonPreview, LabelPreview, BackgroundImagePreview},
         props: {
-            settings: Object
+            settings: Object,
+            defaultImage: String
         },
     }
 </script>

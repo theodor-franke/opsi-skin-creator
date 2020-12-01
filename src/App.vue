@@ -15,6 +15,12 @@
                     <a class="navbar-item" :class="{'is-active': active===POPUP}" @click="active=POPUP">
                         Popup
                     </a>
+                    <a class="navbar-item" :class="{'is-active': active===SHUTDOWN}" @click="active=SHUTDOWN">
+                        Shutdown
+                    </a>
+                    <a class="navbar-item" :class="{'is-active': active===USER_LOGIN}" @click="active=USER_LOGIN">
+                        User Login
+                    </a>
                 </div>
             </div>
         </nav>
@@ -23,12 +29,19 @@
             <block-settings v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
             <event-settings v-if="active===EVENT" :settings.sync="settings.event"/>
             <popup-settings v-if="active===POPUP" :settings.sync="settings.popup"/>
+            <action-settings v-if="active===SHUTDOWN" :settings.sync="settings.shutdown"/>
+            <action-settings v-if="active===USER_LOGIN" :settings.sync="settings.userlogin"/>
         </div>
         <div id="preview">
-            <action-preview v-if="active===ACTION" :settings="settings.action"/>
+            <action-preview v-if="active===ACTION" :settings="settings.action"
+                            :default-image="require('@/assets/action.png')"/>
             <block-preview v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
             <event-preview v-if="active===EVENT" :settings.sync="settings.event"/>
             <popup-preview v-if="active===POPUP" :settings.sync="settings.popup"/>
+            <action-preview v-if="active===SHUTDOWN" :settings="settings.shutdown"
+                            :default-image="require('@/assets/action.png')"/>
+            <action-preview v-if="active===USER_LOGIN" :settings="settings.userlogin"
+                            :default-image="require('@/assets/userlogin.png')"/>
         </div>
     </div>
 </template>
@@ -56,6 +69,8 @@
                 BLOCK_LOGIN: 'block',
                 EVENT: 'event',
                 POPUP: 'popup',
+                SHUTDOWN: 'shutdown',
+                USER_LOGIN: 'userlogin',
 
                 active: 'action',
                 settings: {
@@ -454,7 +469,7 @@
                             Color: '255,255,255'
                         },
                         ButtonExit: {
-                            Name: 'Stop-Button',
+                            Name: 'Exit-Button',
                             Left: 140,
                             Top: 275,
                             Width: 120,
@@ -463,7 +478,175 @@
                             ChoiceIndex: 0,
                             Text: 'close'
                         },
-                    }
+                    },
+                    shutdown: {
+                        backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
+                        Form: {
+                            Width: 300,
+                            Height: 200,
+                            Left: -1,
+                            Top: -1,
+                            Transparent: false,
+                            StayOnTop: true,
+                            Frame: false,
+                            Resizable: false,
+                            Closeable: false,
+                            Minimizable: false,
+                            Hidden: false,
+                            FadeIn: true,
+                            FadeOut: true,
+                            Systray: true,
+                            Color: '255,255,255',
+                            TransparentColor: '255,0,255',
+                            Text: 'Opsi event'
+                        },
+                        ImageBg: {
+                            active: true,
+                            Left: 0,
+                            Top: 0,
+                            Width: 300,
+                            Height: 200,
+                            imageData: null,
+                            File: 'action.bmp'
+                        },
+                        LabelStatus: {
+                            active: true,
+                            Name: 'LabelStatus',
+                            Transparent: true,
+                            Left: 65,
+                            Top: 15,
+                            Width: 230,
+                            Height: 30,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 12,
+                            FontColor: '106,128,174',
+                            FontBold: true,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'status',
+                            Text: 'Connecting to opsiclientd...',
+                            Color: '255,255,255'
+                        },
+                        LabelMessage: {
+                            active: true,
+                            Name: 'LabelMessage',
+                            Transparent: true,
+                            Left: 25,
+                            Top: 55,
+                            Width: 260,
+                            Height: 90,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 10,
+                            FontColor: '50,50,50',
+                            FontBold: false,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'message',
+                            Text: '',
+                            Color: '255,255,255'
+                        },
+                        ButtonTheme: {
+                            ColorBgPassive: '229,241,241',
+                            ColorBgOver: '225,255,255',
+                            ColorBgChecked: '229,241,241',
+                            ColorBgDisabled: '232,232,232',
+                            ColorBorderPassive: '196,197,197',
+                            ColorBorderOver: '76,160,160',
+                            ColorBorderFocused: '76,160,160',
+                            ColorFont: '0,0,0',
+                        },
+                        ButtonStop: {
+                            Name: 'Stop-Button',
+                            Left: 15,
+                            Top: 175,
+                            Width: 120,
+                            Height: 15,
+                            SubjectId: 'choice',
+                            ChoiceIndex: 0,
+                            Text: ''
+                        },
+                        ButtonStart: {
+                            Name: 'Start-Button',
+                            Left: 165,
+                            Top: 175,
+                            Width: 120,
+                            Height: 15,
+                            SubjectId: 'choice',
+                            ChoiceIndex: 1,
+                            Text: ''
+                        }
+                    },
+                    userlogin: {
+                        backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
+                        Form: {
+                            Width: 300,
+                            Height: 200,
+                            Left: -1,
+                            Top: -1,
+                            Transparent: false,
+                            StayOnTop: true,
+                            Frame: false,
+                            Resizable: false,
+                            Closeable: false,
+                            Minimizable: false,
+                            Hidden: false,
+                            FadeIn: true,
+                            FadeOut: true,
+                            Systray: true,
+                            Color: '255,255,255',
+                            TransparentColor: '255,0,255',
+                            Text: 'Opsi user login'
+                        },
+                        ImageBg: {
+                            active: true,
+                            Left: 0,
+                            Top: 0,
+                            Width: 300,
+                            Height: 200,
+                            imageData: null,
+                            File: 'userlogin.bmp'
+                        },
+                        LabelStatus: {
+                            active: true,
+                            Name: 'LabelStatus',
+                            Transparent: true,
+                            Left: 65,
+                            Top: 15,
+                            Width: 230,
+                            Height: 30,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 12,
+                            FontColor: '106,128,174',
+                            FontBold: true,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'status',
+                            Text: 'Connecting to opsiclientd...',
+                            Color: '255,255,255'
+                        },
+                        LabelMessage: {
+                            active: true,
+                            Name: 'LabelMessage',
+                            Transparent: true,
+                            Left: 25,
+                            Top: 55,
+                            Width: 260,
+                            Height: 130,
+                            FontName: 'DejaVu Sans',
+                            FontSize: 10,
+                            FontColor: '50,50,50',
+                            FontBold: false,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'message',
+                            Text: '',
+                            Color: '255,255,255'
+                        }
+                    },
                 }
             }
         }

@@ -91,6 +91,9 @@
             transparent() {
                 this.updateCanvas()
             },
+            defaultImage() {
+                this.updateCanvas()
+            },
         }
     }
 </script>
