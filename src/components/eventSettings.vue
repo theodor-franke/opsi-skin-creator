@@ -1,7 +1,11 @@
 <template>
     <div class="box">
-        <div class="notification is-warning is-light">
-            The background-color is set by the background-color of the Form
+        <div class="field">
+            <label class="label">Background Color</label>
+            <p class="help">
+                This is only for testing and not included in the final Skin.
+            </p>
+            <chrome v-model='newSettings.backgroundColor' style="margin-top: 10px"/>
         </div>
         <form-section :form.sync="newSettings.Form" :default-pos="1"/>
         <background-image-section :image.sync="newSettings.ImageBg"/>
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+    import chrome from 'vue-color/src/components/Chrome.vue';
     import FormSection from "@/components/sections/formSection";
     import BackgroundImageSection from "@/components/sections/backgroundImageSection";
     import LabelSection from "@/components/sections/LabelSection";
@@ -26,7 +31,7 @@
 
     export default {
         name: "eventSettings",
-        components: {ButtonSection, ButtonThemeSection, LabelSection, BackgroundImageSection, FormSection},
+        components: {ButtonSection, ButtonThemeSection, LabelSection, BackgroundImageSection, FormSection, chrome},
         props: {
             settings: Object
         },

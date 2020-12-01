@@ -1,5 +1,5 @@
 <template>
-    <div class="opsi-form" :style="formStyle" :class="{'opsi-event': event}">
+    <div class="opsi-form" :style="formStyle">
         <slot></slot>
     </div>
 </template>
@@ -25,6 +25,12 @@
 
                 if (this.form.Transparent) style['backgroundColor'] = 'transparent';
                 else style['backgroundColor'] = this.OpsiRGBtoRGBString(this.form.Color);
+
+                if (this.event) {
+                    style['position'] = 'relative';
+                    style['margin'] = 'calc(50vh - ' + this.form.Height / 2 + 'px) auto 0 auto';
+                }
+
                 return style
             }
         }
@@ -35,9 +41,5 @@
     .opsi-form {
         position: absolute;
         display: block;
-    }
-    .opsi-event {
-        position: relative !important;
-        margin: 20px auto 0 auto;
     }
 </style>

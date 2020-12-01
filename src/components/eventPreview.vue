@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="{backgroundColor: OpsiRGBtoRGBString(settings.Form.Color)}">
+    <div class="wrapper" :style="{backgroundColor: settings.backgroundColor['hex']}">
         <form-preview :form="settings.Form" event>
             <background-image-preview
                     v-if="settings.ImageBg.active"
