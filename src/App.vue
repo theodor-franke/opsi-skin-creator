@@ -12,6 +12,9 @@
                     <a class="navbar-item" :class="{'is-active': active===EVENT}" @click="active=EVENT">
                         Event
                     </a>
+                    <a class="navbar-item" :class="{'is-active': active===POPUP}" @click="active=POPUP">
+                        Popup
+                    </a>
                 </div>
             </div>
         </nav>
@@ -19,11 +22,13 @@
             <action-settings v-if="active===ACTION" :settings.sync="settings.action"/>
             <block-settings v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
             <event-settings v-if="active===EVENT" :settings.sync="settings.event"/>
+            <popup-settings v-if="active===POPUP" :settings.sync="settings.popup"/>
         </div>
         <div id="preview">
             <action-preview v-if="active===ACTION" :settings="settings.action"/>
             <block-preview v-if="active===BLOCK_LOGIN" :settings.sync="settings.block"/>
             <event-preview v-if="active===EVENT" :settings.sync="settings.event"/>
+            <popup-preview v-if="active===POPUP" :settings.sync="settings.popup"/>
         </div>
     </div>
 </template>
@@ -35,15 +40,22 @@
     import BlockPreview from "@/components/blockPreview";
     import EventSettings from "@/components/eventSettings";
     import EventPreview from "@/components/eventPreview";
+    import PopupSettings from "@/components/popupSettings";
+    import PopupPreview from "@/components/popupPreview";
 
     export default {
         name: 'App',
-        components: {EventPreview, EventSettings, BlockPreview, BlockSettings, ActionSettings, ActionPreview},
+        components: {
+            PopupPreview,
+            PopupSettings,
+            EventPreview, EventSettings, BlockPreview, BlockSettings, ActionSettings, ActionPreview
+        },
         data() {
             return {
                 ACTION: 'action',
                 BLOCK_LOGIN: 'block',
                 EVENT: 'event',
+                POPUP: 'popup',
 
                 active: 'action',
                 settings: {
@@ -361,6 +373,97 @@
                             Text: 'Stop'
                         }
                     },
+                    popup: {
+                        backgroundColor: {"rgba": {"r": 198, "g": 198, "b": 198, "a": 1}, "hex": "#c6c6c6"},
+                        Form: {
+                            Width: 400,
+                            Height: 300,
+                            Left: 0,
+                            Top: 0,
+                            Transparent: false,
+                            StayOnTop: true,
+                            Frame: false,
+                            Resizable: false,
+                            Closeable: false,
+                            Minimizable: false,
+                            Hidden: false,
+                            FadeIn: true,
+                            FadeOut: true,
+                            SlideIn: false, //@TODO Implement in settings
+                            SlideOut: false,
+                            Systray: true,
+                            Color: '255,255,255',
+                            TransparentColor: '255,0,255',
+                            Text: 'Message'
+                        },
+                        ButtonTheme: {
+                            ColorBgPassive: '229,241,241',
+                            ColorBgOver: '225,255,255',
+                            ColorBgChecked: '229,241,241',
+                            ColorBgDisabled: '232,232,232',
+                            ColorBorderPassive: '196,197,197',
+                            ColorBorderOver: '76,160,160',
+                            ColorBorderFocused: '76,160,160',
+                            ColorFont: '0,0,0',
+                        },
+                        ImageBg: {
+                            active: true,
+                            Left: 0,
+                            Top: 0,
+                            Width: 400,
+                            Height: 300,
+                            imageData: null,
+                            File: 'popup.bmp'
+                        },
+                        LabelMessage: {
+                            active: true,
+                            Name: 'Label Message',
+                            Transparent: true,
+                            Left: 15,
+                            Top: 50,
+                            Width: 375,
+                            Height: 215,
+                            FontName: 'Segoe UI',
+                            FontSize: 16,
+                            FontColor: '0,0,0',
+                            FontBold: false,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: 'message',
+                            Text: '',
+                            Color: '255,255,255'
+                        },
+                        LabelTitle: {
+                            active: true,
+                            Name: 'Label Title',
+                            Transparent: true,
+                            Left: 80,
+                            Top: 10,
+                            Width: 360,
+                            Height: 30,
+                            FontName: 'Segoe UI',
+                            FontSize: 30,
+                            FontColor: '39,64,139',
+                            FontBold: false,
+                            FontItalic: false,
+                            FontUnderline: false,
+                            Alignment: 'left',
+                            SubjectId: null,
+                            Text: 'Message',
+                            Color: '255,255,255'
+                        },
+                        ButtonExit: {
+                            Name: 'Stop-Button',
+                            Left: 140,
+                            Top: 275,
+                            Width: 120,
+                            Height: 20,
+                            SubjectId: 'choice',
+                            ChoiceIndex: 0,
+                            Text: 'close'
+                        },
+                    }
                 }
             }
         }

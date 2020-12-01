@@ -17,6 +17,7 @@
                     height: this.label.Height + 'px',
                     left: this.label.Left + 'px',
                     top: this.label.Top + 'px',
+                    lineHeight: this.label.Height + 'px',
                     fontFamily: this.label.FontName,
                     fontSize: this.label.FontSize - 1 + 'px',
                     color: this.OpsiRGBtoRGBString(this.label.FontColor),
